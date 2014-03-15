@@ -12,16 +12,16 @@ if($_GET['check']==1){
 	$errcolor = 'red';
 	$bgpass2 = $bgpass1 = $bgemail = $bgtel = $bguser = 'white';
 	if($pass1 != $pass2){
-		$bgpass2 = $errcolor;
+		//$bgpass2 = $errcolor;
 		$err = true;
 	}	
 	if(strlen($pass1) < 1){
-		$bgpass1 = $errcolor;
+		//$bgpass1 = $errcolor;
 		$err = true;	
 	}
 	$domain = strstr($email,"@");
 	if($domain === false || strstr($domain,".") === false){
-		$bgemail = $errcolor;
+		//$bgemail = $errcolor;
 		$err = true;
 	}
 
@@ -29,7 +29,7 @@ if($_GET['check']==1){
 	$users = mysql_query($query) or die(mysql_error());
 	
 	if(mysql_num_rows($users) != 0){
-		$bgemail = $errcolor;
+		//$bgemail = $errcolor;
 		$err = true;
 	}
 
@@ -37,13 +37,13 @@ if($_GET['check']==1){
 	$regusers = mysql_query($query);
 	
 	if(mysql_num_rows($regusers) != 0){
-	  $bgemail = $errcolor;
+	  //$bgemail = $errcolor;
 	  $err = true;
 	}
 	
 	
 	if(!$err){
-                $query = "SELECT `Key` FROM `reguser`";
+        $query = "SELECT `Key` FROM `reguser`";
 		$keys = mysql_query($query);
 		$keyslist = array();
 		while($row = mysql_fetch_array($keys)){
@@ -57,12 +57,21 @@ if($_GET['check']==1){
 		$query = "INSERT INTO `regusers`(`EmailAddres`, `Password`, `Key`) VALUES ('".$email."','".md5($pass1)."','".$key."')";
 		mysql_query($query) or die(mysql_error());
  		mail($email,'amTwo - registration','95.211.48.13/AM2/UMS/checkmail.php?key='.$key,'From: no-reply@amTwo.com');
-	    	echo "<meta http-equiv='refresh' content='0; url=index.php'>";
+	    echo "<meta http-equiv='refresh' content='0; url=/amtwo/?mes=mailsend'>";
 	}
+	//else{
+      //  echo '<script type="text/javascript">';
+        //echo '$(document).ready(function(){';
+          //echo '$("#messagebar").text("Register failed, try again")';
+          //echo '$("#messagebar").delay(500).slideToggle("500").delay(3000).slideToggle("1000")';
+        //echo '})</script>';
+
+	//}
 
 }
 
 ?>
+<div id="content">
 <center>
 <div class='title' style='margin-top:-20px;'>Register</div>
 <div class='lineundertitle'></div><br>
@@ -91,6 +100,7 @@ if($_GET['check']==1){
 	<tr><td></td></tr>
 	
 </table>
-<input type='button' class='button' value='home' onclick='location.href="/AM2/index.php"'></button><input class='button' value='submit' type='submit'>
+<input type='button' class='button' value='home' onclick='location.href="/amtwo/"'></button><input class='button' value='submit' type='submit'>
 </form>	
 </center>
+</div>

@@ -9,20 +9,18 @@
 <head>
 	<title>amTwo</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<script src="jquery-1.10.2.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body>
 
 	<?php 
 	// header
 	include "css/standardheader.php";
+	include "System/messagebar.php";
 	include "System/handling.php";
-
-	
-	
+ 	
 	//User wants to log out.
 	if($_GET['instr']=='logout'){
-		echo 'test';
 		include 'UMS/logout.php';
 	}
 	
@@ -43,7 +41,12 @@
 	
 	// copieright footer
 	include "css/standardfooter.html";
+
+	include "docs/documentation.php";
+
 	?>
-	
+	<script type="text/javascript">
+		history.pushState("", document.title, window.location.pathname);
+	</script>
 </body>
 </html>

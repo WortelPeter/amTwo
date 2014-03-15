@@ -17,11 +17,11 @@
 			$query = "UPDATE users SET LoginIP='".$ipaddress."', KeyString='".$key."' WHERE EmailAddres='".$_SESSION['username']."'";
 			mysql_query($query) or die("MySQL error: ".mysql_error());
 			
-			echo "<meta http-equiv='refresh' content='0;url=/AM2'>";
+			echo "<meta http-equiv='refresh' content='0;url=/amtwo/?mes=loginsucces'>";
 			
 		}
 		else{
-			echo "Login Failed, please try again...<br>";
-			echo "<meta http-equiv='refresh' content='1.5;url=/AM2'>";
+			//echo "Login Failed, please try again...<br>";
+			echo "<meta http-equiv='refresh' content='0;url=/amtwo/?mes=loginfailed'>";
 		}
 	?>
