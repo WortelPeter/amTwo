@@ -1,4 +1,4 @@
-body{background-image:url('/Account_Mng/bg.png');}
+body{background-image:url('bg.png');}
 
 #topbar{background-color:white;text-align:center;border-bottom:1px solid rgba(0,0,0,0.2);}
   #topbar.topbarmenuitem{margin-right:5px;margin-left:5px;float:right;}
