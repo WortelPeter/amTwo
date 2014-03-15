@@ -1,0 +1,5 @@
+
+body{background-image:url('/Account_Mng/bg.png');}
+  #header{background-color:white;width:98%;height:20px;margin:0 auto;}
+    #header a{color:black;text-decoration:none;}
+  #standardwrap{border-radius:10px;background-color:white;width:70%;height:65%;margin:0 auto;margin-top:5%;border:7px solid black;border-top:20px solid black;}

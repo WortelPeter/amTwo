@@ -1,0 +1,53 @@
+ 
+<div class='leftcolumn'>
+	<div class='title'>Your accounts:</div>
+	<div id='accountswrap'>	
+		<table class='nospacing'>
+		<tr id='header'><td id='topleft' width='40%'>Website</td><td width='40%;'>Account</td><td width='45%;'>Role</td><td id='topright'>Manage</td></tr>
+		<?php
+				 
+		$query = "SELECT * FROM rights_accounts WHERE UserID = ".$_SESSION['userid'][0];
+		$rights = mysql_query($query);
+		
+		if(mysql_num_rows($rights) == 0){
+			echo '<tr><td>You have no accounts using .Theam.</td></tr>';
+		}
+		
+		while($row = mysql_fetch_array($rights)){
+			
+			$query = "SELECT * FROM accounts WHERE AccountID = ".$row[2];
+			$account = mysql_fetch_array(mysql_query($query));
+			$query = "SELECT * FROM clients WHERE ID = ".$account[1];
+			$client = mysql_fetch_array(mysql_query($query));
+			
+			echo "<tr><td><a href='".$client[3]."'>".$client[2]."</a></td><td>".$account[2]."</td><td>".$rightslabels[$row[3]]."</td><td><center><a href='/Account_Mng/index.php?instr=accounts&account=".$account[0]."'>+</a></center></td></tr>";
+				
+		}
+		
+		?>
+		</table>
+	</div>
+	
+</div>
+<div class='rightcolumn'>
+	<?php
+	$accountid = $_GET['account'];
+	$query = "SELECT MAX(`Right`) FROM `rights_accounts` WHERE `UserID` = ".$_SESSION['userid'][0]." AND `AccountID`=".$accountid;
+	$right = mysql_fetch_array(mysql_query($query));
+	if(empty($right[0])){
+		echo 'You do not have sufficient rights to access this account.';
+	}else{
+		$query = "SELECT * FROM accounts WHERE AccountID = ".$accountid;
+		$account = mysql_fetch_array(mysql_query($query));
+		$accountname = $account[2];
+		$query = "SELECT * FROM clients WHERE ID = ".$account[0];
+		$client = mysql_fetch_array(mysql_query($query));
+		echo "<title>".$accountname."</title>";	
+		echo '<table>';
+		echo "<tr><td>Account:</td><td>".$accountname."</td></tr>";
+		echo "<tr><td>Website:</td><td>".$client[2]."</td></tr>";
+		echo "<tr><td>Your Role:</td><td>".$rightslabels[$right[0]]."</td></tr>";
+		echo '</table';
+	}		
+	?>
+</div>

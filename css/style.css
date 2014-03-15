@@ -1,0 +1,27 @@
+body{background-image:url('/Account_Mng/bg.png');}
+
+#topbar{background-color:white;text-align:center;border-bottom:1px solid rgba(0,0,0,0.2);}
+  #topbar.topbarmenuitem{margin-right:5px;margin-left:5px;float:right;}
+#footer{background-color:white;position:fixed;bottom:0%;text-align:center;width:40%;margin-left:30%;}
+
+#smallnamebox{margin:0 auto;font-size:35px;color:black;width:5em;font-weight:bold;text-align:center;margin-top:10%;cursor:pointer;}
+#smallbox{width:20.5em;height:11em;border:6px solid black;border-top:15px solid black;border-radius:4px;margin:0 auto;background-color:white;text-align:center;padding-top:2em;}
+
+.title{font-size:20px;padding:0px;margin:0px;width:16em; text-align:center;position:relative;}
+.lineundertitle{width:10em;margin:0 auto;border:1px solid black;}
+
+#formbox{margin-top:1em;text-align:center;}
+
+
+.bgblack{background-color:black;}
+	
+table.nospacing{border-spacing:0px;width:18.5em;overflow:auto;} 
+
+a:link{color:black;text-decoration:none;}
+a:visited{color:black;text-decoration:none;}
+a:hover{color:black;text-decoration:underline;}
+	
+.leftround{border-top-left-radius:7px;border-bottom-left-radius:7px;}
+.rightround{border-top-right-radius:7px;border-bottom-right-radius:7px;}
+
+.button{background-color:gray;border:2px solid black;margin-top:0.3em;}
